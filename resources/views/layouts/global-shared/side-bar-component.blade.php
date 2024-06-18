@@ -13,7 +13,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="side-menu {{request()->routeIs('') ? 'side-menu--active' : null}}">
+                    <a href="{{ route('orders.index') }}" class="side-menu {{request()->routeIs('orders') ? 'side-menu--active' : null}}">
                         <div class="side-menu__icon">
                             <i icon-name="pencil"></i>
                         </div>
@@ -36,7 +36,7 @@
                     </a>
                     <ul class="">
                     <li>
-                            <a href="" class="side-menu {{ request()->routeIs('') ? 'side-menu--active' : '' }}">
+                            <a href="{{ route('transactions.index') }}" class="side-menu {{ request()->routeIs('transactions') ? 'side-menu--active' : '' }}">
                                 <div class="side-menu__icon">
                                     <i icon-name="book-open"></i>
                                 </div>
@@ -45,7 +45,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="" class="side-menu {{ request()->routeIs('') ? 'side-menu--active' : '' }}">
                                 <div class="side-menu__icon">
                                     <i icon-name="book-open"></i>
@@ -54,7 +54,7 @@
                                     Produk Terjual
                                 </div>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
                 <li>
@@ -73,7 +73,7 @@
                             <i icon-name="pencil"></i>
                         </div>
                         <div class="side-menu__title">
-                           Keluar
+                           Bundling
                         </div>
                     </a>
                 </li>
