@@ -112,7 +112,7 @@ class BundlingController extends Controller
         });
         $associationRulesAscending = array_slice($associationRulesAscending, 0, 10);
 
-        dd($associationRulesDescending, $associationRulesAscending);
+        // dd($associationRulesDescending, $associationRulesAscending);
     
         return view('bundlings.index', compact('associationRulesDescending', 'associationRulesAscending'));
     }
