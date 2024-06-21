@@ -58,7 +58,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="" class="side-menu {{request()->routeIs('') ? 'side-menu--active' : null}}">
+                    <a href="{{ route('fp_growths.index') }}" class="side-menu {{request()->routeIs('fp_growths') ? 'side-menu--active' : null}}">
                         <div class="side-menu__icon">
                             <i icon-name="pencil"></i>
                         </div>
@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="side-menu {{request()->routeIs('') ? 'side-menu--active' : null}}">
+                    <a href="{{ route('bundings.index') }}" class="side-menu {{request()->routeIs('bundlings') ? 'side-menu--active' : null}}">
                         <div class="side-menu__icon">
                             <i icon-name="pencil"></i>
                         </div>

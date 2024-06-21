@@ -6,12 +6,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FpGrowth;
-use Auth;
 use DB;
-use Illuminate\Database\QueryException;
+use Auth;
+use App\Models\Order;
+use App\Models\FpGrowth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Database\QueryException;
 
 class FpGrowthController extends Controller
 {
@@ -23,7 +24,7 @@ class FpGrowthController extends Controller
      */
     public function index(Request $request)
     {
-        $fp_growths = FpGrowth::query();
+        $orders = Order::query();
         $filter = [];
         if(isset($request->filter)) {
             $filter = $request->filter;
@@ -32,22 +33,52 @@ class FpGrowthController extends Controller
 
                     if( $key == 'sort') {
                         $sort = explode('|', $value);
-                        $fp_growths = $fp_growths->orderBy($sort[0], $sort[1]);
+                        $orders = $orders->orderBy($sort[0], $sort[1]);
                         continue;
                     }
 
                     // if($key == 'dummy') {
 
                     // } else {
-                        $fp_growths = $fp_growths->where($key, 'like', '%'.$value.'%');
+                        $orders = $orders->where($key, 'like', '%'.$value.'%');
                     // }
                 }
             }
         }
-        $fp_growths = $fp_growths->paginate(50);
+        $orders = $orders->paginate(50);
+
+        $itemsets = [];
+
+        foreach ($orders as $order) {
+            $items = explode(',', $order->produk); // Asumsikan produk dipisahkan dengan koma
+            foreach ($items as $item) {
+                $item = trim($item);
+                if (isset($itemsets[$item])) {
+                    $itemsets[$item]++;
+                } else {
+                    $itemsets[$item] = 1;
+                }
+            }
+        }
+
+        // Hitung support untuk setiap itemset
+        $totalOrders = count($orders);
+        $supportData = [];
+
+        foreach ($itemsets as $item => $count) {
+            $support = $count / $totalOrders;
+            $supportData[] = ['itemset' => $item, 'support' => $support];
+        }
+
+        // Urutkan berdasarkan support terbesar
+        usort($supportData, function ($a, $b) {
+            return $b['support'] <=> $a['support'];
+        });
+
         //
         return view('fp_growths.index')
-                    ->with('fp_growths', $fp_growths)
+                    ->with('orders', $orders)
+                    ->with('supportData', $supportData)
                     ->with('filter', $filter);
     }
 

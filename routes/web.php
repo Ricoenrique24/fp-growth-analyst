@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BundlingController;
 use App\Http\Controllers\DarkModeController;
+use App\Http\Controllers\FpGrowthController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\TransactionController;
 
@@ -35,6 +37,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('orders', OrderController::class);
     Route::resource('transactions', TransactionController::class);
+    Route::resource('fp_growths', FpGrowthController::class);
+    Route::resource('bundings', BundlingController::class);
 });
 
 require __DIR__.'/auth.php';

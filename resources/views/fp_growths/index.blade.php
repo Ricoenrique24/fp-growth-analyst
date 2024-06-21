@@ -2,7 +2,7 @@
 	<x-slot name="breadcrumb">
 		<nav aria-label="breadcrumb" class="-intro-x mr-auto h-full">
 			<ol class="breadcrumb breadcrumb-light">
-                <li class="breadcrumb-item active">Fp Growths</li>
+                <li class="breadcrumb-item active">Orders</li>
 			</ol>
 		</nav>
 	</x-slot>
@@ -19,42 +19,32 @@
                     {!! Form::luxFilterBtn() !!}
                 </div>
                 <div class="basis-auto px-1 text-right">
-                    {!! H::createBtn('fp_growths.create') !!}
+                    {!! H::createBtn('orders.create') !!}
                 </div>
             </div>
         {!! Form::close() !!}
 		<div class="p-5">
             <div class="overflow-x-auto">
                 <table class="table-sm table-bordered table-hover table">
-                    <thead class="table-dark">
+                    <thead>
                         <tr>
-                            <th class="whitespace-nowrap">No</th>
-                            <th class="whitespace-nowrap">Code</th>
-                            <th class="whitespace-nowrap">Name</th>
-                            <th class="whitespace-nowrap">Action</th>
+                            <th>Support</th>
+                            <th>Itemsets</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($fp_growths as $fp_growth)
+                        @foreach ($supportData as $data)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $fp_growth->code }}</td>
-                                <td>{{ $fp_growth->name }}</td>
-                                <td>
-                                    {!! H::indexShowBtn('fp_growths.show', $fp_growth->id) !!}
-                                    {!! H::indexEditBtn('fp_growths.edit', $fp_growth->id) !!}
-                                    {!! H::indexDeleteBtn('fp_growths.destroy', $fp_growth->id) !!}
-                                </td>
+                                <td>{{ number_format($data['support'], 6) }}</td>
+                                <td>{{ $data['itemset'] }}</td>
                             </tr>
-                        @empty
-                            @include('shared._no_data', ['col' => 4])
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>
 		</div>
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            {!! H::indexLinks($fp_growths, $filter) !!}
+            {!! H::indexLinks($orders, $filter) !!}
         </div>
 	</div>
 
