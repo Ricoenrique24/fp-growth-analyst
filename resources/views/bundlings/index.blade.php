@@ -17,15 +17,15 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Antecedent, Consequent</th>
+                            <th>Hasil</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php $i = 1 @endphp
-                        @foreach ($associationRulesDescending as $rule)
+                        @foreach ($bundlingLaku as $rule)
                             <tr>
                                 <td>{{ $i }}</td>
-                                <td>{{ $rule['antecedent'] . ', ' . $rule['consequent'] }}</td>
+                                <td>{{ $rule->antecedent . ', ' . $rule->consequent }}</td>
                             </tr>
                             @php $i++ @endphp
                         @endforeach
@@ -51,10 +51,10 @@
                     </thead>
                     <tbody>
                         @php $i = 1 @endphp
-                        @foreach ($associationRulesDescending as $rule)
+                        @foreach ($bundlingRugi as $rule)
                             <tr>
                                 <td>{{ $i }}</td>
-                                <td>{{ $rule['antecedent'] . ', ' . $rule['consequent'] }}</td>
+                                <td>{{ $rule->antecedent . ', ' . $rule->consequent }}</td>
                             </tr>
                             @php $i++ @endphp
                         @endforeach

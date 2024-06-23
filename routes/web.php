@@ -9,6 +9,11 @@ use App\Http\Controllers\FpGrowthController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\TransactionController;
 
+// Controller Baru
+use App\Http\Controllers\NewBundlingController;
+use App\Http\Controllers\NewFpGrowthController;
+use App\Http\Controllers\NewTransactionController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,9 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('orders', OrderController::class);
-    Route::resource('transactions', TransactionController::class);
-    Route::resource('fp_growths', FpGrowthController::class);
-    Route::resource('bundings', BundlingController::class);
+    Route::resource('transactions', NewTransactionController::class);
+    Route::resource('fp_growths', NewFpGrowthController::class);
+    Route::resource('bundings', NewBundlingController::class);
 });
 
 require __DIR__.'/auth.php';

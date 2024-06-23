@@ -25,13 +25,12 @@
                         @foreach ($supportData as $data)
                             <tr>
                                 <td>{{ $i }}</td>
-                                <td>{{ $data['itemset'] }}</td>
-                                <td>{{ number_format($data['support'], 6) }}</td>
+                                <td>{{ $data->itemsets }}</td>
+                                <td>{{ $data->support }}</td>
                             </tr>
                             @php $i++ @endphp
                         @endforeach
                     </tbody>
-
                 </table>
             </div>
         </div>
@@ -48,23 +47,23 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Antecedents</th>
-                            <th>consequents</th>
-                            <th>support</th>
-                            <th>confidence</th>
-                            <th>lift</th>
+                            <th colspan="2" style="text-align: center;">Rules</th>
+                            <th style="text-align: center;">Support</th>
+                            <th style="text-align: center;">Confidence</th>
+                            <th style="text-align: center;">Lift</th>
                         </tr>
+
                     </thead>
                     <tbody>
                         @php $i = 1 @endphp
-                        @foreach ($supportData as $data)
+                        @foreach ($produkLaku as $data)
                             <tr>
                                 <td>{{ $i }}</td>
-                                <td>{{ number_format($data['support'], 6) }}</td>
-                                <td>{{ $data['itemset'] }}</td>
-                                <td>null</td>
-                                <td>null</td>
-                                <td>null</td>
+                                <td>{{ $data->antecedent }}</td>
+                                <td>{{ $data->consequent }}</td>
+                                <td>{{ $data->support }}</td>
+                                <td>{{ $data->confidence }}</td>
+                                <td>{{ $data->lift }}</td>
                             </tr>
                             @php $i++ @endphp
                         @endforeach
@@ -85,23 +84,23 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Antecedents</th>
-                            <th>consequents</th>
-                            <th>support</th>
-                            <th>confidence</th>
-                            <th>lift</th>
+                            <th colspan="2" style="text-align: center;">Rules</th>
+                            <th style="text-align: center;">Support</th>
+                            <th style="text-align: center;">Confidence</th>
+                            <th style="text-align: center;">Lift</th>
                         </tr>
+
                     </thead>
                     <tbody>
                         @php $i = 1 @endphp
-                        @foreach ($supportData as $data)
+                        @foreach ($produkRugi as $data)
                             <tr>
                                 <td>{{ $i }}</td>
-                                <td>{{ number_format($data['support'], 6) }}</td>
-                                <td>{{ $data['itemset'] }}</td>
-                                <td>null</td>
-                                <td>null</td>
-                                <td>null</td>
+                                <td>{{ $data->antecedent }}</td>
+                                <td>{{ $data->consequent }}</td>
+                                <td>{{ $data->support }}</td>
+                                <td>{{ $data->confidence }}</td>
+                                <td>{{ $data->lift }}</td>
                             </tr>
                             @php $i++ @endphp
                         @endforeach
