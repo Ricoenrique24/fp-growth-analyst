@@ -33,7 +33,7 @@
         "@fullcalendar/timegrid": "^5.5.1",
         "@left4code/tw-starter": "^3.1.35",
         "@popperjs/core": "^2.4.4",
-        "chart.js": "^3.7.1",
+        "chart.js": "^3.9.1",
         "dayjs": "^1.8.33",
         "dropzone": "^5.7.2",
         "highlight.js": "^10.6.0",
